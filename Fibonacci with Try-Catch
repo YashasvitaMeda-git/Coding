@@ -1,15 +1,26 @@
 import java.util.*;
+import java.lang.*;
 public class Main {
     public static void main(String[] args) {
       Scanner sc=new Scanner(System.in);
+      int n;
+      while(true){
+          try{
+             n=Integer.parseInt(sc.nextLine());
+             break;
+          }
+          catch(NumberFormatException e){
+              System.out.println("Give only integer");
+          }
+      }
+      
       try {
-        int n=sc.nextInt();
         if(n<=0){
-          throw new IllegalArgumentException("Not positive number");
+          throw new IllegalArgumentException("Give positive integer");
         }
-      int a=1;
+      int a=0;
       int b=1;
-      System.out.println("Series");
+      System.out.println("Fibonacci Series till "+n);
         for(int i=1;i<=n;i++){
           System.out.print(a+" ");
           int sum=a+b;
@@ -17,8 +28,8 @@ public class Main {
           b=sum;
         }
       }
-      catch(Exception e){
-        System.out.println("Invalid input: " + e);
+      catch(IllegalArgumentException e){
+        System.out.println("Invalid input: " + e.getMessage());
       }
   }
 }
